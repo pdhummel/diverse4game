@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, Diverse4GameActivity!</string>
+    <string name="app_name">Diverse4Game</string>
+    <string name="helpText">
+<![CDATA[    
+Diverse4Game is based on a board game called Quarto.
+<br /><br />
+Objective:<br/>
+* Get 4 pieces in a row which share a common attribute.<br/>  
+* The attributes are male/female, frown/smile, yellow/white, nose/no-nose.<br/>
+<br/>
+Sequence of play:<br/>
+* The first player picks a piece for the next player to play.<br/>
+* No piece is played on the board yet, and the first player\'s turn ends.<br/>
+</br>
+* The second player places the piece chosen for them on the board.<br/>
+* If the game is not won and there are still pieces to play, the game will continue.<br/>
+* The second player then picks a piece for the first player to play.<br/>
+<br/>
+* The steps of placing a piece and picking a piece repeat until the game is over.<br/>
+<br/>
+]]>
+    </string>
+</resources>

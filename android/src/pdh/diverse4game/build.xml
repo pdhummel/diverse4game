@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<project name="diverse4game" default="all" basedir=".">
+    <description>Get 4 in a row</description>
+
+    <property name="project.dir" value="../../.."/>
+    <property name="src.dir" value="${project.dir}/src"/>
+    <property name="build.dir" value="${project.dir}/classes"/>
+
+
+    <target name="compileAll" depends="init">
+        <antcall target="compile">
+            <param name="javafile" value="pdh/diverse4game/**"/> 
+            <param name="srcdir" value="${src.dir}" />
+            <param name="destdir" value="${dest.dir}" />
+        </antcall>
+    </target>
+
+
+    <target name="package" depends="compileAll">
+        <jar jarfile="${build.dir}/pdh/diverse4game/diverse4game.jar" 
+	        manifest="${build.dir}/META-INF/Manifest.MF"
+            basedir="${build.dir}" 
+            includes="pdh/diverse4game/*.class,
+            		  pdh/diverse4game/*.properties,
+	                  META-INF/MANIFEST.MF, 
+	                  pdh/diverse4game/images/*.gif">
+        </jar>
+    </target>
+
+
+    <target name="compilej" >
+        <echo>Compiling ${file}</echo>
+        <antcall target="compile">
+            <param name="javafile" value="pdh/diverse4game/${file}"/> 
+            <param name="srcdir" value="${src.dir}" />
+            <param name="destdir" value="${dest.dir}" />
+        </antcall>
+    </target>
+
+
+    <target name="compile" depends="makebuilddir">
+        <!-- echo>Compiling ${javafile}</echo -->
+        <javac srcdir="${src.dir}" destdir="${build.dir}" includes="${javafile}">
+            <classpath>
+                <fileset dir="${build.dir}">
+                    <include name="**/*.class"/>
+                </fileset>
+            </classpath>
+        </javac>
+    </target>
+
+
+    <target name="clean">
+        <delete>
+            <fileset dir="${build.dir}/pdh/diverse4game" 
+                     includes="*.class, *.jar" />
+        </delete>
+    </target>
+
+
+    <!-- Generic initialization target. -->
+    <target name="init">
+        <tstamp/>
+    </target>
+
+
+    <!-- Generic target to make the build directory. -->
+    <target name="makebuilddir">
+        <mkdir dir="${build.dir}" />
+    </target>
+
+    <!-- Generic build all target. -->
+    <target name="all" >
+        <antcall target="clean" />
+        <antcall target="compileAll" />
+        <antcall target="package" />
+        <antcall target="install" />
+    </target>
+
+</project>
